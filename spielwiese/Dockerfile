@@ -4,10 +4,12 @@ FROM openjdk:17-jdk-alpine
 # Arbeitsverzeichnis erstellen
 WORKDIR /minecraft
 
-# Kopiere die Konfigurationen und das dynamisch übergebene Plugin in das Image
-COPY config/ /minecraft/config/
-ARG PLUGIN
-COPY $PLUGIN /minecraft/plugins/
+# Installiere curl
+RUN apk add --no-cache curl
+
+# Kopiere die Konfiguration (paper.yml) in das Image
+ARG CONFIG
+COPY $CONFIG /minecraft/config/paper.yml
 
 # Lade die neueste PaperMC-Version herunter
 RUN mkdir -p /minecraft/run && \
