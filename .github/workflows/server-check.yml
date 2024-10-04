@@ -18,10 +18,10 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3  # Aktualisiere auf Version 3
 
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
+      uses: docker/setup-buildx-action@v2  # Aktualisiere auf Version 2
 
     - name: Run Tests for paper.yml on ${{ matrix.server }}
       run: |
