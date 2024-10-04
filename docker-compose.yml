@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  servera:
+    build: ./ServerA
+    container_name: minecraft_server_a
+    ports:
+      - "25565:25565"
+    volumes:
+      - ./proxy/config:/minecraft/config
+      - ./ServerA/plugins:/minecraft/plugins
+      - ./ServerA/run:/minecraft/run
+    restart: unless-stopped
+
+  serverb:
+    build: ./ServerB
+    container_name: minecraft_server_b
+    ports:
+      - "25566:25565"  # Mapping des Ports für Server B
+    volumes:
+      - ./ServerB/config:/minecraft/config
+      - ./ServerB/plugins:/minecraft/plugins
+      - ./ServerB/run:/minecraft/run
+    restart: unless-stopped

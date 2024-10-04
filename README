@@ -1,0 +1,45 @@
+minecraft-server-network/
+│
+├── proxy/                      # Waterfall Proxy Server
+│   ├── Dockerfile              # Dockerfile für Waterfall Proxy
+│   ├── config/                 # Proxy-spezifische Konfiguration (config.yml, etc.)
+│   ├── start.sh                # Startskript für den Proxy
+│   └── run/                    # Laufzeitdateien für den Proxy (z.B. Waterfall jar)
+│
+├── lobby/                      # Lobby-Server
+│   ├── Dockerfile              # Dockerfile für Lobby-Server
+│   ├── plugins/                # Plugins für Lobby
+│   ├── config/                 # Konfiguration für den Lobby-Server
+│   ├── paper.yml               # Paper-spezifische Konfiguration
+│   ├── start.sh                # Startskript für Lobby
+│   └── run/                    # Laufzeitdateien für Lobby
+│
+├── homerepublic/               # HomeRepublic-Server
+│   ├── Dockerfile              # Dockerfile für HomeRepublic
+│   ├── plugins/                # Plugins für HomeRepublic
+│   ├── config/                 # Konfiguration für HomeRepublic
+│   ├── paper.yml               # Paper-spezifische Konfiguration
+│   ├── start.sh                # Startskript für HomeRepublic
+│   └── run/                    # Laufzeitdateien für HomeRepublic
+│
+├── farmwelt/                   # Farmwelt-Server
+│   ├── Dockerfile              # Dockerfile für Farmwelt
+│   ├── plugins/                # Plugins für Farmwelt
+│   ├── config/                 # Konfiguration für Farmwelt
+│   ├── paper.yml               # Paper-spezifische Konfiguration
+│   ├── start.sh                # Startskript für Farmwelt
+│   └── run/                    # Laufzeitdateien für Farmwelt
+│
+├── shared-plugins/             # Gemeinsame Plugins für alle Server
+│   └── ...                     # Z.B. spezielle APIs oder Utility-Plugins
+│
+├── docker-compose.yml          # Docker Compose Datei zum Starten aller Server
+│
+├── .github/workflows/          # GitHub Actions Workflows
+│   └── ci.yml                  # Workflow für CI/CD, der Plugins testet/baut
+│
+├── docs/                       # Docs für die Server
+│
+│
+├── README.md                   # Dokumentation des Repositories
+└── LICENSE                     # Lizenzdatei (falls notwendig)
