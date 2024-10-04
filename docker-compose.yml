@@ -1,24 +1,45 @@
 version: '3.8'
 
 services:
-  servera:
-    build: ./ServerA
-    container_name: minecraft_server_a
+  proxy:
+    build: ./proxy
+    container_name: minecraft_proxy
+    ports:
+      - "25577:25577" # Proxy-Port
+    volumes:
+      - ./proxy/config:/minecraft/config
+      - ./proxy/run:/minecraft/run
+    restart: unless-stopped
+
+  lobby:
+    build: ./lobby
+    container_name: minecraft_lobby
     ports:
       - "25565:25565"
     volumes:
-      - ./proxy/config:/minecraft/config
-      - ./ServerA/plugins:/minecraft/plugins
-      - ./ServerA/run:/minecraft/run
+      - ./lobby/config:/minecraft/config
+      - ./lobby/plugins:/minecraft/plugins
+      - ./lobby/run:/minecraft/run
     restart: unless-stopped
 
-  serverb:
-    build: ./ServerB
-    container_name: minecraft_server_b
+  homerepublic:
+    build: ./homerepublic
+    container_name: minecraft_homerepublic
     ports:
-      - "25566:25565"  # Mapping des Ports für Server B
+      - "25566:25565"  # Mapping des Ports für HomeRepublic
     volumes:
-      - ./ServerB/config:/minecraft/config
-      - ./ServerB/plugins:/minecraft/plugins
-      - ./ServerB/run:/minecraft/run
+      - ./homerepublic/config:/minecraft/config
+      - ./homerepublic/plugins:/minecraft/plugins
+      - ./homerepublic/run:/minecraft/run
+    restart: unless-stopped
+
+  farmwelt:
+    build: ./farmwelt
+    container_name: minecraft_farmwelt
+    ports:
+      - "25567:25565"  # Mapping des Ports für Farmwelt
+    volumes:
+      - ./farmwelt/config:/minecraft/config
+      - ./farmwelt/plugins:/minecraft/plugins
+      - ./farmwelt/run:/minecraft/run
     restart: unless-stopped

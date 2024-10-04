@@ -1,0 +1,49 @@
+name: Test all DEV Plugins in Spielwiese
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test_plugins:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: List Plugins
+      id: list_plugins
+      run: |
+        # Liste alle Plugins im spielwiese/plugins-Verzeichnis auf
+        PLUGINS=$(ls spielwiese/plugins/*.jar)
+        echo "Found plugins: $PLUGINS"
+        echo "::set-output name=plugins::$PLUGINS"
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Run Plugin Tests
+      run: |
+        # Iteriere über alle gefundenen Plugins und teste sie einzeln
+        for plugin in ${{ steps.list_plugins.outputs.plugins }}; do
+          echo "Testing plugin: $plugin"
+          
+          # Baue ein Docker-Image für das Plugin
+          docker build -t minecraft-test-spielwiese --build-arg PLUGIN=$plugin ./spielwiese
+          
+          # Starte den Testserver mit dem Plugin
+          docker run -d -p 25565:25565 --name spielwiese-test-server minecraft-test-spielwiese
+          
+          # Warte, bis der Server gestartet ist
+          sleep 30
+
+          # Überprüfe die Logs auf Fehler
+          docker logs spielwiese-test-server | grep -i 'error\|exception' && exit 1 || echo "Keine Fehler im Plugin: $plugin"
+          
+          # Testserver aufräumen
+          docker stop spielwiese-test-server
+          docker rm spielwiese-test-server
+        done
