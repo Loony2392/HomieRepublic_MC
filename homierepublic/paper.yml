@@ -1,0 +1,11 @@
+# PaperMC Configuration File
+# This is just a small example; configure according to your needs
+
+settings:
+  verbose: false
+  shutdown-message: "Server is shutting down"
+  bungee-online-mode: true
+  save-player-data: true
+
+timings:
+  enabled: false
