@@ -1,0 +1,76 @@
+server_connect_timeout: 5000
+enforce_secure_profile: true
+remote_ping_cache: -1
+forge_support: true
+player_limit: 20
+permissions:
+  default:
+  - bungeecord.command.list
+  - bungeecord.command.server
+  admin:
+  - openaudiomc.*
+  - maintenance.admin
+  - bungeecord.command.server
+  - bungeecord.command.alert
+  - bungeecord.command.end
+  - bungeecord.command.ip
+  - bungeecord.command.reload
+  - bungeecord.command.kick
+  - bungeechat.mute
+  - bungeechat.unmute
+timeout: 30000
+log_commands: false
+online_mode: true
+servers:
+  Lobby:
+    motd: \u00a7c[H\u00a7ao\u00a75m\u00a7ei\u00a7ce\u00a79R\u00a7ae\u00a7ep\u00a7bu\u00a75b\u00a7cl\u00a79i\u00a7ac]\u00a7b
+      MC \u00a7eLobby
+    address: 9.0.5.2:25565
+    restricted: false
+  Farmwelt:
+    motd: \u00a7c[H\u00a7ao\u00a75m\u00a7ei\u00a7ce\u00a79R\u00a7ae\u00a7ep\u00a7bu\u00a75b\u00a7cl\u00a79i\u00a7ac]\u00a7b
+      MC \u00a7eFarmwelt
+    address: 9.0.5.4:25565
+    restricted: false
+  Homierepublic:
+    motd: \u00a7c[H\u00a7ao\u00a75m\u00a7ei\u00a7ce\u00a79R\u00a7ae\u00a7ep\u00a7bu\u00a75b\u00a7cl\u00a79i\u00a7ac]\u00a7b
+      MC \u00a7eHomieRepublic
+    address: 9.0.5.3:25565
+    restricted: false
+  Lobby-Clone:
+    motd: \u00a7c[H\u00a7ao\u00a75m\u00a7ei\u00a7ce\u00a79R\u00a7ae\u00a7ep\u00a7bu\u00a75b\u00a7cl\u00a79i\u00a7ac]\u00a7b
+      MC \u00a7eHomieRepublic
+    address: 9.0.5.20:25565
+    restricted: false
+listeners:
+- query_port: 25577
+  motd: Willkommen in der HomieRepublic
+  tab_list: GLOBAL_PING
+  query_enabled: true
+  proxy_protocol: false
+  forced_hosts:
+    pvp.md-5.net: pvp
+  ping_passthrough: true
+  priorities:
+  - Lobby
+  - HomieRepublic
+  - Farmwelt
+  bind_local_address: true
+  host: 0.0.0.0:25577
+  max_players: 20
+  tab_size: 60
+  force_default_server: false
+prevent_proxy_connections: false
+remote_ping_timeout: 5000
+ip_forward: true
+network_compression_threshold: 256
+reject_transfers: false
+disabled_commands:
+- disabledcommandhere
+connection_throttle: 4000
+stats: ba92ed7c-e0ff-46b2-a566-55295febc238
+connection_throttle_limit: 3
+groups:
+  Loony2392:
+  - admin
+log_pings: true

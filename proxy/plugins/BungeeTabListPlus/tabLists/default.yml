@@ -1,0 +1,91 @@
+# This is the default configuration file of BungeeTabListPlus.
+#
+# Since the configuration of the plugin is quite complex you
+# might want to have a look at the wiki from time to time.
+#
+# Wiki: https://github.com/CodeCrafter47/BungeeTabListPlus/wiki
+#  Placeholders: https://github.com/CodeCrafter47/BungeeTabListPlus/wiki/Placeholders
+#  Examples: https://github.com/CodeCrafter47/BungeeTabListPlus/wiki/Examples
+#
+
+showTo: all
+priority: 0
+
+showHeaderFooter: true
+header:
+
+  - "&cW&eillkommen &f${viewer name}"
+  - "&cWi&ellkommen &f${viewer name}"
+  - "&cWil&elkommen &f${viewer name}"
+  - "&cWill&ekommen &f${viewer name}"
+  - "&cWillk&eommen &f${viewer name}"
+  - "&cWillko&emmen &f${viewer name}"
+  - "&cWillkom&emen &f${viewer name}"
+  - "&cWillkomm&een &f${viewer name}"
+  - "&cWillkomme&en &f${viewer name}"
+  - "&cWillkommen&e &f${viewer name}"
+
+
+headerAnimationUpdateInterval: 0.1
+footer: |-
+  &5Powered by LOONY-TECH
+  &5Ihr Könnt das Server Projekt auf https://ko-fi.com/loony_tech unterstützen
+  &5Twitch: https://twitch.tv/mr_marzy
+
+# Configure whether hidden players appear on the tab list
+# see https://github.com/CodeCrafter47/BungeeTabListPlus/wiki/Hidden-Players
+hiddenPlayers: VISIBLE_TO_ADMINS
+
+playerSets:
+  all_players: all
+
+type: FIXED_SIZE
+size: 60
+defaultIcon: colors/dark_gray.png
+defaultPing: 1000
+
+components:
+  - {text: "&cServer: &6${viewer server}", icon: "default/mzym.png", ping: 0}
+  - {text: "&cRank: &6${viewer vault_primary_group}", icon: "default/mzyhey.png", ping: 0}
+  - {text: "&cPing: ${viewer_colored_ping}ms", icon: "default/mzylag.png", ping: 0}
+  -
+  -
+  -
+  - !players_by_server
+    playerSet: all_players
+    serverHeader:
+      - {text: "&e&n${server}&f&o (${server_player_count}):", icon: "default/mzylove.png", ping: 0}
+    serverSeparator:
+      -
+      -
+      -
+    showServers: ALL
+    playerComponent: "${player vault_prefix}${player name}${afk_tag}"
+    morePlayersComponent: {text: "&7... and &e${other_count} &7others", icon: "colors/dark_gray.png", ping: 0}
+  - !spacer {}
+  -
+  -
+  -
+  - {text: "&cZeit: &6${time H:mm:ss}", icon: "default/mzyscream.png", ping: 0}
+  - {text: "&cHomies: &6${playerset:all_players size}", icon: "default/mzylove.png", ping: 0}
+  - {text: "&cWurstzipfel: &6${viewer vault_balance}", icon: "default/pogwurst.png", ping: 0}
+
+# Custom placeholders are a powerful mechanism to add more dynamic content
+# to the tab list.
+# See https://github.com/CodeCrafter47/BungeeTabListPlus/wiki/Custom=Placeholders
+customPlaceholders:
+  afk_tag:
+    !conditional
+    condition: ${player essentials_afk}
+    true: "&7|&oAFK"
+    false: ""
+  viewer_colored_ping:
+    !conditional
+    condition: "${viewer ping} < 150"
+    true: ${viewer_colored_ping0}
+    false: "&c${viewer ping}"
+  viewer_colored_ping0:
+    !conditional
+    condition: "${viewer ping} < 50"
+    true: "&a${viewer ping}"
+    false: "&e${viewer ping}"

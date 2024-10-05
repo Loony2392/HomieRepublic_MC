@@ -1,0 +1,3 @@
+enabled: true
+kick_message: You are not in whitelist!
+whitelist: []

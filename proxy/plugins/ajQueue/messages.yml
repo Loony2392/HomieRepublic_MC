@@ -1,0 +1,136 @@
+status:
+    offline:
+        base: '&c{SERVER} ist {STATUS}. &7Du befindest dich in Position &f{POS}&7
+            von &f{LEN}&7.'
+        offline: offline
+        restarting: Neustart
+        full: voll
+        restricted: eingeschränkt
+        paused: pausiert
+        whitelisted: Whitelist
+    online:
+        base: '&7Du befindest dich in Position &f{POS}&7 von &f{LEN}&7. Geschätzte
+            Zeit: {TIME}'
+    left-last-queue: '&aDu hast die letzte Warteschlange verlassen.'
+    now-in-queue: |-
+        &aDu stehst jetzt in der Warteschlange für {SERVER}! &7Du befindest dich in Position &f{POS}&7 von &f{LEN}&7.
+        &7Tippe &f/leavequeue&7 oder &f<click:run_command:/leavequeue {SERVERNAME}>klicke hier</click>&7, um die Warteschlange zu verlassen!
+    now-in-empty-queue: ''
+    sending-now: '&aDu wirst jetzt zu &f{SERVER} &ageschickt..'
+errors:
+    server-not-exist: '&cDer Server {SERVER} existiert nicht!'
+    already-queued: '&cDu stehst bereits in dieser Warteschlange!'
+    player-only: '&cDieser Befehl kann nur von Homies ausgeführt werden!'
+    already-connected: '&cDu bist bereits mit diesem Server verbunden!'
+    cant-join-paused: '&cDu kannst dich nicht in die Warteschlange für {SERVER} einreihen,
+        weil sie pausiert ist.'
+    deny-joining-from-server: '&cDu darfst dich nicht von diesem Server aus in Warteschlangen
+        einreihen!'
+    wrong-version:
+        base: <red>Du musst auf {VERSIONEN} sein, um diesem Server beizutreten!
+        or: ' oder '
+        comma: ', '
+    too-fast-queue: <red>Du stehst zu schnell in der Warteschlange!
+commands:
+    leave-queue: '&aDu hast die Warteschlange für {SERVER} verlassen!'
+    reload: '&aKonfiguration und Nachrichten erfolgreich neu geladen!'
+    joinqueue:
+        usage: '&cVerwendung: /joinqueue <server>'
+    kick:
+        usage: '<red>Verwendung: /ajqueue kick <Homie> [Warteschlange]'
+        no-player: '&cHomie {PLAYER} konnte nicht gefunden werden! Stelle sicher,
+            dass er sich in einer Warteschlange befindet!'
+        unknown-server: '&cDie Warteschlange {QUEUE} konnte nicht gefunden werden.
+            Stelle sicher, dass du sie richtig geschrieben hast!'
+        success: <green>{NUM} Homies von {SERVER} entfernt!
+    kickall:
+        usage: '<red>Verwendung: /ajqueue kickall <Warteschlange>'
+        success: <green>{NUM} Homies von {SERVER} entfernt!
+    pausequeueserver:
+        unpaused: <green>Die Pausierung wurde aufgehoben! <gray>Du kannst die Warteschlangenserver
+            jetzt wieder normal verwenden.
+        paused: <green>Du bist jetzt pausiert! <gray>Du wirst nicht mehr über Warteschlangenserver
+            verschickt.
+        reminder: '<gold>Erinnerung: <yellow>Du bist derzeit für Warteschlangenserver
+            pausiert, daher wirst du nicht über sie verschickt!<gray> Verwende <white>/ajQueue
+            pausequeueserver</white>, um die Pause aufzuheben und zum normalen Verhalten
+            zurückzukehren.'
+    leave:
+        more-args: '&cBitte gib an, aus welcher Warteschlange du austreten möchtest!
+            &7Du befindest dich in diesen Warteschlangen: {QUEUES}'
+        queues-list-format: '&f{NAME}&7, '
+        not-queued: '&cDu stehst nicht in dieser Warteschlange! &7Du befindest dich
+            in diesen Warteschlangen: {QUEUES}'
+        no-queues: '&cDu stehst in keiner Warteschlange!'
+    pause:
+        more-args: '&cVerwendung: /ajqueue pause <Server> [an/aus]'
+        no-server: '&cDieser Server existiert nicht!'
+        success: '&aDie Warteschlange für {SERVER} ist jetzt {PAUSED}'
+        paused:
+            'true': '&epausiert'
+            'false': '&aun-pausiert'
+    send:
+        player-not-found: '&cDieser Homie konnte nicht gefunden werden. Stelle sicher,
+            dass er online ist!'
+        usage: '<red>Verwendung: /ajqueue send <Homie> <Server>'
+    listqueues:
+        header: '&9Warteschlangen:'
+        format: '<hover:show_text:''&7Status: {STATUS}''>{COLOR}{NAME}&7: {COUNT}
+            in Warteschlange</hover>'
+noperm: '&cDu hast keine Berechtigung, dies zu tun!'
+format:
+    time:
+        mins: '{m}m {s}s'
+        secs: '{s} Sekunden'
+list:
+    format: '&b{SERVER} &7({COUNT}): {LIST}'
+    playerlist: '&9{NAME}&7, '
+    total: '&7Gesamtzahl der Homies in Warteschlangen: &f{TOTAL}'
+    none: '&7Keine'
+spigot:
+    actionbar:
+        online: '&7Du stehst in der Warteschlange für &f{SERVER}&7. Du befindest dich
+            in Position &f{POS}&7 von &f{LEN}&7. Geschätzte Zeit: {TIME}'
+        offline: '&7Du stehst in der Warteschlange für &f{SERVER}&7. Du befindest
+            dich in Position &f{POS}&7 von &f{LEN}&7.'
+send: '&a{PLAYER} wurde zur Warteschlange für {SERVER} hinzugefügt.'
+remove: '&a{PLAYER} aus allen Warteschlangen entfernt, in denen sie sich befanden.'
+placeholders:
+    queued:
+        none: Keine
+    position:
+        none: Keine
+    estimated_time:
+        none: Keine
+    status:
+        online: '&aOnline'
+        offline: '&cOffline'
+        restarting: '&cNeustart'
+        full: '&eVoll'
+        restricted: '&eEingeschränkt'
+        paused: '&ePausiert'
+        whitelisted: '&eWhitelist'
+title:
+    title: ''
+    subtitle: <gold>Du bist auf Position <green>#{POS} <gold>in der Warteschlange!
+    sending-now:
+        title: ''
+        subtitle: <green>Du wirst jetzt zu <white>{SERVER} <green>geschickt..
+max-tries-reached: '&cVerbindung zum {SERVER} nicht möglich. Maximale Versuche erreicht.'
+auto-queued: '&aDu wurdest automatisch für {SERVER} in die Warteschlange gestellt,
+    weil du gekickt wurdest.'
+velocity-kick-message: '<red>Du wurdest während des Versuchs, {SERVER} beizutreten,
+    gekickt: <white>{REASON}'
+updater:
+    update-available: |-
+        <gray><strikethrough>                                                         <reset>
+        <green>Ein Update für ajQueue ist verfügbar!
+        <dark_green>Du kannst es <click:run_command:/ajqueue update><bold>hier herunterladen</bold>
+        oder mit <gray>/ajQueue update</click> aktualisieren.
+        <gray><strikethrough>                                                         <reset>
+    no-update: <red>Es ist kein Update verfügbar.
+    success: <green>Das Update wurde heruntergeladen! Starte jetzt einfach den Server
+        neu.
+    fail: <red>Beim Herunterladen des Updates ist ein Fehler aufgetreten. Überprüfe
+        die Konsole für weitere Informationen.
+    already-downloaded: <red>Das Update wurde bereits heruntergeladen.
